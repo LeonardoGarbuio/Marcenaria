@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Madeira Nobre | Móveis Planejados de Alto Padrão</title>
+    
+    <!-- Tipografia de Luxo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+
+    <!-- Ícones -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* =========================================
+           VARIÁVEIS DE LUXO
+           ========================================= */
+        :root {
+            --bg-light: #F9F8F6;
+            --bg-dark: #1A1A1A;
+            --text-dark: #111111;
+            --text-light: #F9F8F6;
+            --text-muted: #7A7A7A;
+            --accent-wood: #8B5A2B;
+            --accent-beige: #D2C4B4;
+            --border-color: rgba(0, 0, 0, 0.1);
+            
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Inter', sans-serif;
+        }
+
+        /* =========================================
+           RESET E BASE
+           ========================================= */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-light); }
+        ::-webkit-scrollbar-thumb { background: #CCC; border-radius: 10px; }
+
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 5%; }
+        section { padding: 8rem 0; position: relative; }
+
+        /* =========================================
+           HEADER
+           ========================================= */
+        header {
+            position: fixed; top: 0; width: 100%; z-index: 100;
+            padding: 1.5rem 5%; display: flex; justify-content: space-between; align-items: center;
+            transition: 0.4s ease; border-bottom: 1px solid transparent;
+        }
+        header.scrolled { background: rgba(249, 248, 246, 0.9); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border-color); padding: 1rem 5%; }
+        
+        .logo { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 600; letter-spacing: 1px; color: var(--text-dark); text-decoration: none; }
+        
+        .nav-links { display: flex; gap: 3rem; }
+        .nav-links a { color: var(--text-dark); text-decoration: none; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 500; position: relative; }
+        .nav-links a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0%; height: 1px; background: var(--text-dark); transition: 0.3s; }
+        .nav-links a:hover::after { width: 100%; }
+
+        .btn-primary {
+            display: inline-flex; align-items: center; gap: 10px;
+            background: var(--text-dark); color: var(--text-light);
+            padding: 1rem 2rem; border-radius: 0; text-decoration: none;
+            font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;
+            transition: 0.4s ease; border: 1px solid var(--text-dark);
+        }
+        .btn-primary:hover { background: var(--accent-wood); border-color: var(--accent-wood); color: #FFF; }
+        
+        .btn-secondary {
+            display: inline-flex; align-items: center; gap: 10px;
+            background: transparent; color: var(--text-light);
+            padding: 1rem 2rem; border-radius: 0; text-decoration: none;
+            font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;
+            transition: 0.4s ease; border: 1px solid rgba(255,255,255,0.3);
+        }
+        .btn-secondary:hover { background: rgba(255,255,255,0.1); border-color: #FFF; }
+
+        /* =========================================
+           HERO SECTION (Vazio -> Planejado)
+           ========================================= */
+        .hero { height: 100vh; padding: 0; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        
+        .hero-layer { position: absolute; inset: 0; background-size: cover; background-position: center; }
+        
+        .hero-empty { 
+            background-image: url('https://images.unsplash.com/photo-1505691938895-1758d7feb511?q=80&w=2070&auto=format&fit=crop'); 
+            filter: grayscale(100%) contrast(0.8) brightness(1.2);
+            z-index: 1;
+        }
+        .hero-empty::after {
+            content: ''; position: absolute; inset: 0;
+            background-image: linear-gradient(rgba(0,0,0,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.1) 1px, transparent 1px);
+            background-size: 40px 40px; pointer-events: none;
+        }
+
+        .hero-planned {
+            background-image: url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=2070&auto=format&fit=crop');
+            z-index: 2; clip-path: inset(100% 0 0 0);
+        }
+        .hero-planned::after {
+            content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.4);
+        }
+
+        .hero-content {
+            position: relative; z-index: 3; text-align: center; color: var(--text-light);
+            max-width: 900px; padding: 0 2rem;
+        }
+        .hero-title { font-family: var(--font-serif); font-size: clamp(3rem, 6vw, 5.5rem); font-weight: 400; line-height: 1.1; margin-bottom: 1.5rem; }
+        .hero-title i { font-style: italic; color: var(--accent-beige); }
+        .hero-subtitle { font-size: 1.1rem; font-weight: 300; letter-spacing: 1px; margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+        
+        .hero-actions { display: flex; gap: 1.5rem; justify-content: center; }
+
+        .hero-loader { position: absolute; bottom: 50px; left: 50%; transform: translateX(-50%); z-index: 3; display: flex; flex-direction: column; align-items: center; gap: 10px; color: #FFF; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; }
+        .hero-loader-bar { width: 150px; height: 1px; background: rgba(255,255,255,0.3); position: relative; }
+        .hero-loader-fill { position: absolute; left: 0; top: 0; height: 100%; width: 0%; background: #FFF; }
+
+        /* =========================================
+           INTERAÇÃO: MONTE SEU AMBIENTE (3D REAL)
+           ========================================= */
+        .interactive-section { background: var(--bg-dark); color: var(--text-light); }
+        .int-header { text-align: center; margin-bottom: 5rem; }
+        .int-header h2 { font-family: var(--font-serif); font-size: 3rem; font-weight: 400; margin-bottom: 1rem; }
+        .int-header p { color: var(--text-muted); text-transform: uppercase; letter-spacing: 3px; font-size: 0.8rem; }
+
+        .int-container { display: grid; grid-template-columns: 300px 1fr; gap: 4rem; height: 650px; }
+        
+        .int-nav { display: flex; flex-direction: column; justify-content: center; gap: 2rem; border-left: 1px solid rgba(255,255,255,0.1); padding-left: 2rem; }
+        .int-btn { background: none; border: none; color: var(--text-muted); font-family: var(--font-serif); font-size: 2rem; text-align: left; transition: 0.4s; opacity: 0.5; position: relative; cursor: pointer;}
+        .int-btn:hover { opacity: 0.8; color: #FFF; }
+        .int-btn.active { opacity: 1; color: var(--accent-beige); font-size: 2.5rem; }
+        .int-btn.active::before { content: ''; position: absolute; left: -2rem; top: 50%; transform: translateY(-50%); width: 3px; height: 100%; background: var(--accent-beige); }
+
+        /* Estilos do Editor 3D */
+        .int-display { 
+            position: relative; border-radius: 8px; overflow: hidden; 
+            background: #EAEAEA; box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+        }
+        
+        #webgl-editor { width: 100%; height: 100%; cursor: grab; }
+        #webgl-editor:active { cursor: grabbing; }
+
+        .editor-ui {
+            position: absolute; top: 1.5rem; right: 1.5rem; z-index: 10;
+            display: flex; flex-direction: column; gap: 1rem; align-items: flex-end;
+            pointer-events: none;
+        }
+
+        .editor-toolbar {
+            display: flex; gap: 10px; background: rgba(255,255,255,0.9);
+            padding: 10px; border-radius: 8px; backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); pointer-events: auto;
+        }
+        .editor-toolbar button {
+            background: transparent; border: none; color: var(--text-dark);
+            width: 40px; height: 40px; border-radius: 6px; cursor: pointer;
+            display: flex; align-items: center; justify-content: center; transition: 0.2s;
+        }
+        .editor-toolbar button:hover { background: rgba(0,0,0,0.05); color: var(--accent-wood); }
+
+        .editor-materials {
+            background: rgba(255,255,255,0.9); padding: 15px; border-radius: 8px;
+            backdrop-filter: blur(10px); box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            pointer-events: auto; display: none; /* Shown only when object selected */
+            animation: fadeIn 0.3s ease;
+        }
+        .mat-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1px; color: #555; margin-bottom: 10px; display: block; font-weight: 600; }
+        .mat-group { display: flex; gap: 10px; }
+        .mat-btn {
+            width: 35px; height: 35px; border-radius: 50%; border: 2px solid transparent;
+            cursor: pointer; transition: 0.2s;
+        }
+        .mat-btn:hover { transform: scale(1.1); }
+        .mat-btn.active { border-color: var(--text-dark); padding: 2px; background-clip: content-box; }
+        
+        .m-carvalho { background: #C19A6B; }
+        .m-freijo { background: #8C5A35; }
+        .m-branco { background: #F5F5F5; border: 1px solid #DDD; }
+        .m-preto { background: #1A1A1A; }
+        .m-cinza { background: #888888; }
+        .m-palhinha { background: repeating-linear-gradient(45deg, #E6D5A7, #E6D5A7 2px, #D4C18E 2px, #D4C18E 4px); }
+
+
+        .editor-instructions {
+            position: absolute; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+            background: rgba(17, 17, 17, 0.8); color: #FFF; padding: 0.5rem 1.5rem;
+            border-radius: 50px; font-size: 0.75rem; letter-spacing: 1px;
+            backdrop-filter: blur(5px); display: flex; align-items: center; gap: 10px;
+            pointer-events: none;
+        }
+
+        @keyframes fadeIn { from { opacity:0; transform:translateY(-10px); } to { opacity:1; transform:translateY(0); } }
+
+        /* =========================================
+           LINHA DE PRODUÇÃO (PROCESSO)
+           ========================================= */
+        .process-section { background: var(--bg-light); overflow: hidden; }
+        .process-header { margin-bottom: 4rem; }
+        .process-header h2 { font-family: var(--font-serif); font-size: 3.5rem; font-weight: 400; line-height: 1.1; }
+        .process-header span { color: var(--accent-wood); font-weight: 500; letter-spacing: 2px; text-transform: uppercase; font-size: 0.8rem; display: block; margin-bottom: 1rem; }
+
+        .process-wrapper { width: 100%; overflow: hidden; }
+        .process-track { display: flex; width: max-content; gap: 5rem; padding: 4rem 10vw 4rem 0; }
+        
+        .process-card { width: 400px; display: flex; flex-direction: column; position: relative; }
+        .p-number { font-family: var(--font-serif); font-size: 4rem; color: #E5E5E5; line-height: 1; margin-bottom: 1rem; transition: 0.4s; }
+        .process-card:hover .p-number { color: var(--accent-wood); }
+        .p-line { height: 1px; width: 100%; background: var(--border-color); margin-bottom: 2rem; position: relative; }
+        .p-line::after { content: ''; position: absolute; top: 0; left: 0; height: 100%; width: 0%; background: var(--accent-wood); transition: width 0.6s ease; }
+        .process-card:hover .p-line::after { width: 100%; }
+        
+        .p-title { font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; }
+        .p-desc { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; }
+        .p-image { margin-top: 2rem; width: 100%; height: 250px; background-size: cover; background-position: center; filter: grayscale(100%); transition: 0.5s; }
+        .process-card:hover .p-image { filter: grayscale(0%); }
+
+        /* =========================================
+           MATERIAIS (ACABAMENTOS)
+           ========================================= */
+        .materials-section { background: var(--bg-dark); color: #FFF; }
+        .mat-header { text-align: center; margin-bottom: 6rem; }
+        .mat-header h2 { font-family: var(--font-serif); font-size: 3.5rem; font-weight: 400; }
+
+        .materials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        .mat-card { position: relative; height: 400px; overflow: hidden; }
+        .mat-bg { position: absolute; inset: 0; background-size: cover; background-position: center; transition: transform 0.8s ease; }
+        .mat-card:hover .mat-bg { transform: scale(1.1); }
+        .mat-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%); display: flex; flex-direction: column; justify-content: flex-end; padding: 2rem; }
+        
+        .mat-title { font-family: var(--font-serif); font-size: 1.8rem; margin-bottom: 0.5rem; transform: translateY(20px); transition: 0.4s; }
+        .mat-desc { font-size: 0.8rem; color: #BBB; text-transform: uppercase; letter-spacing: 2px; opacity: 0; transform: translateY(20px); transition: 0.4s; transition-delay: 0.1s; }
+        .mat-card:hover .mat-title, .mat-card:hover .mat-desc { transform: translateY(0); opacity: 1; }
+
+        /* =========================================
+           GALERIA EDITORIAL
+           ========================================= */
+        .gallery-section { background: var(--bg-light); }
+        .gal-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 6rem; }
+        .gal-header h2 { font-family: var(--font-serif); font-size: 4rem; font-weight: 400; line-height: 1; }
+        
+        .gallery-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 2rem; }
+        .g-item { position: relative; overflow: hidden; }
+        .g-item img { width: 100%; height: 100%; object-fit: cover; }
+        
+        .g-item-1 { grid-column: 1 / 8; height: 600px; }
+        .g-item-2 { grid-column: 9 / 13; height: 400px; margin-top: 100px; }
+        .g-item-3 { grid-column: 2 / 6; height: 500px; margin-top: -100px; }
+        .g-item-4 { grid-column: 7 / 13; height: 700px; }
+
+        .g-caption { position: absolute; bottom: 0; left: 0; background: #FFF; padding: 1.5rem 2rem; display: flex; flex-direction: column; }
+        .g-caption span { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent-wood); margin-bottom: 5px; }
+        .g-caption h3 { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 400; }
+
+        /* =========================================
+           VENDAS E BENEFÍCIOS
+           ========================================= */
+        .sales-section { background: #111; color: #FFF; padding: 10rem 0; text-align: center; }
+        .sales-title { font-family: var(--font-serif); font-size: clamp(2.5rem, 4vw, 4rem); font-weight: 400; line-height: 1.2; max-width: 1000px; margin: 0 auto 5rem auto; }
+        .sales-title i { color: var(--accent-wood); }
+        
+        .benefits-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 2rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 4rem; }
+        .benefit-card { text-align: left; }
+        .benefit-icon { color: var(--accent-wood); margin-bottom: 1.5rem; }
+        .benefit-card h4 { font-size: 1.1rem; font-weight: 600; margin-bottom: 1rem; }
+        .benefit-card p { font-size: 0.85rem; color: #888; line-height: 1.6; }
+
+        /* =========================================
+           PROVA SOCIAL
+           ========================================= */
+        .testim-section { background: var(--bg-light); text-align: center; }
+        .t-quote { font-family: var(--font-serif); font-size: 2.5rem; font-style: italic; max-width: 900px; margin: 0 auto 2rem auto; color: var(--text-dark); line-height: 1.4; }
+        .t-author { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); font-weight: 600; }
+
+        /* =========================================
+           CTA FINAL
+           ========================================= */
+        .cta-section { background: var(--bg-dark); color: #FFF; padding: 10rem 0; text-align: center; }
+        .cta-section h2 { font-family: var(--font-serif); font-size: 4rem; font-weight: 400; margin-bottom: 3rem; }
+        
+        footer { background: var(--bg-dark); border-top: 1px solid rgba(255,255,255,0.05); padding: 2rem 5%; display: flex; justify-content: space-between; color: #666; font-size: 0.8rem; }
+
+        @media (max-width: 992px) {
+            .hero-title { font-size: 3rem; }
+            .int-container { grid-template-columns: 1fr; height: auto; }
+            .int-nav { border-left: none; padding-left: 0; flex-direction: row; flex-wrap: wrap; justify-content: center; }
+            .int-btn.active::before { display: none; }
+            .int-display { height: 400px; }
+            .materials-grid { grid-template-columns: 1fr; }
+            .gallery-grid { display: flex; flex-direction: column; gap: 2rem; }
+            .g-item { height: 400px !important; margin-top: 0 !important; }
+            .benefits-grid { grid-template-columns: 1fr; }
+            .sales-title { font-size: 2rem; }
+            .t-quote { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header id="header">
+        <a href="#" class="logo">Madeira Nobre</a>
+        <nav class="nav-links">
+            <a href="#ambientes">Ambientes</a>
+            <a href="#processo">Processo</a>
+            <a href="#materiais">Acabamentos</a>
+            <a href="#projetos">Portfólio</a>
+        </nav>
+        <a href="https://wa.me/SEUNUMERO" target="_blank" class="btn-primary">WhatsApp</a>
+    </header>
+
+    <!-- 1. HERO: A TRANSFORMAÇÃO -->
+    <section class="hero">
+        <div class="hero-layer hero-empty"></div>
+        <div class="hero-layer hero-planned" id="planned-layer"></div>
+        
+        <div class="hero-content">
+            <h1 class="hero-title gs-reveal">Seu ambiente,<br><i>desenhado</i> para viver melhor.</h1>
+            <p class="hero-subtitle gs-reveal">Móveis planejados sob medida para transformar espaços vazios em projetos arquitetônicos únicos e funcionais.</p>
+            <div class="hero-actions gs-reveal">
+                <a href="https://wa.me/SEUNUMERO" target="_blank" class="btn-primary">Solicitar Projeto</a>
+                <a href="#ambientes" class="btn-secondary">Ver Ambientes</a>
+            </div>
+        </div>
+
+        <div class="hero-loader">
+            <span id="loader-text">Analisando planta...</span>
+            <div class="hero-loader-bar"><div class="hero-loader-fill" id="loader-fill"></div></div>
+        </div>
+    </section>
+
+    <!-- 2. EXPERIÊNCIA INTERATIVA (3D REAL) -->
+    <section class="interactive-section" id="ambientes">
+        <div class="container">
+            <div class="int-header gs-fade">
+                <p>Visualização Imersiva</p>
+                <h2>Monte seu ambiente</h2>
+            </div>
+
+            <div class="int-container">
+                <!-- Navegação de Ambientes -->
+                <div class="int-nav gs-fade">
+                    <button class="int-btn" onclick="loadRoom('cozinha')">Cozinha</button>
+                    <button class="int-btn" onclick="loadRoom('sala')">Sala de Estar</button>
+                    <button class="int-btn" onclick="loadRoom('closet')">Closet</button>
+                    <button class="int-btn" onclick="loadRoom('escritorio')">Escritório</button>
+                </div>
+                
+                <!-- Área do Editor 3D -->
+                <div class="int-display gs-fade">
+                    <div id="webgl-editor"></div>
+                    
+                    <div class="editor-ui">
+                        <div class="editor-toolbar">
+                            <button onclick="addFurnitureItem()" title="Adicionar Móvel Extra"><i data-lucide="plus"></i></button>
+                            <button onclick="deleteSelected()" title="Remover Selecionado"><i data-lucide="trash-2"></i></button>
+                            <button onclick="resetScene()" title="Restaurar Padrão"><i data-lucide="rotate-ccw"></i></button>
+                        </div>
+                        
+                        <div class="editor-materials" id="material-panel">
+                            <span class="mat-label">Acabamento</span>
+                            <div class="mat-group">
+                                <button class="mat-btn m-carvalho active" onclick="applyMaterial('carvalho')" title="Carvalho"></button>
+                                <button class="mat-btn m-branco" onclick="applyMaterial('branco')" title="Laca Branca"></button>
+                                <button class="mat-btn m-preto" onclick="applyMaterial('preto')" title="Preto Matte"></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="editor-instructions">
+                        <i data-lucide="move" style="width:14px;"></i> Clique e arraste os móveis | Botão esquerdo para rodar câmara
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. PROCESSO (LINHA DE PRODUÇÃO) -->
+    <section class="process-section" id="processo">
+        <div class="container">
+            <div class="process-header gs-fade">
+                <span>Engenharia & Arte</span>
+                <h2>Antes de virar móvel,<br>vira <i>projeto.</i></h2>
+            </div>
+        </div>
+
+        <div class="process-wrapper" id="process-wrapper">
+            <div class="process-track" id="process-track">
+                <div class="process-card">
+                    <div class="p-number">01</div>
+                    <div class="p-line"></div>
+                    <h3 class="p-title">Imersão & Briefing</h3>
+                    <p class="p-desc">Entendemos a sua rotina, necessidades e estilo. O design começa com uma conversa aprofundada sobre como você vive o seu espaço.</p>
+                    <div class="p-image" style="background-image: url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=2070&auto=format&fit=crop');"></div>
+                </div>
+                <div class="process-card">
+                    <div class="p-number">02</div>
+                    <div class="p-line"></div>
+                    <h3 class="p-title">Medição Precisa</h3>
+                    <p class="p-desc">Nossa equipe técnica realiza a conferência milimétrica do ambiente com equipamentos a laser, garantindo um encaixe perfeito.</p>
+                    <div class="p-image" style="background-image: url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2071&auto=format&fit=crop');"></div>
+                </div>
+                <div class="process-card">
+                    <div class="p-number">03</div>
+                    <div class="p-line"></div>
+                    <h3 class="p-title">Arquitetura 3D</h3>
+                    <p class="p-desc">Apresentamos renderizações hiper-realistas para que você caminhe pelo seu futuro ambiente antes mesmo de enviarmos para a fábrica.</p>
+                    <div class="p-image" style="background-image: url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000&auto=format&fit=crop');"></div>
+                </div>
+                <div class="process-card">
+                    <div class="p-number">04</div>
+                    <div class="p-line"></div>
+                    <h3 class="p-title">Manufatura High-Tech</h3>
+                    <p class="p-desc">O projeto é executado com maquinário alemão e montado por mestres marceneiros, unindo tecnologia de precisão com acabamento artesanal.</p>
+                    <div class="p-image" style="background-image: url('https://images.unsplash.com/photo-1622838327005-4e78a252277d?q=80&w=2070&auto=format&fit=crop');"></div>
+                </div>
+                <div class="process-card">
+                    <div class="p-number">05</div>
+                    <div class="p-line"></div>
+                    <h3 class="p-title">Instalação Limpa</h3>
+                    <p class="p-desc">Nossa equipe realiza a montagem final na sua casa protegendo o ambiente, entregando o seu projeto limpo e pronto para uso.</p>
+                    <div class="p-image" style="background-image: url('https://images.unsplash.com/photo-1581858326451-b0e6ce6cb3ec?q=80&w=2070&auto=format&fit=crop');"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. MATERIAIS -->
+    <section class="materials-section" id="materiais">
+        <div class="container">
+            <div class="mat-header gs-fade">
+                <h2>Toque & Sensação</h2>
+                <p style="color:#888; font-weight: 300; letter-spacing: 1px;">A curadoria rigorosa das matérias-primas que darão vida ao seu projeto.</p>
+            </div>
+
+            <div class="materials-grid">
+                <div class="mat-card">
+                    <div class="mat-bg" style="background-image: url('https://images.unsplash.com/photo-1546411516-c11fb53b478d?q=80&w=2070&auto=format&fit=crop');"></div>
+                    <div class="mat-overlay">
+                        <h3 class="mat-title">Carvalho Natural</h3>
+                        <span class="mat-desc">Lâmina de madeira nobre | Toque poroso</span>
+                    </div>
+                </div>
+                <div class="mat-card">
+                    <div class="mat-bg" style="background-image: url('https://images.unsplash.com/photo-1510659616035-7dce8d626af0?q=80&w=2070&auto=format&fit=crop');"></div>
+                    <div class="mat-overlay">
+                        <h3 class="mat-title">Laca Fosca</h3>
+                        <span class="mat-desc">Pintura PU | Acabamento aveludado</span>
+                    </div>
+                </div>
+                <div class="mat-card">
+                    <div class="mat-bg" style="background-image: url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=2158&auto=format&fit=crop');"></div>
+                    <div class="mat-overlay">
+                        <h3 class="mat-title">Freijó Autêntico</h3>
+                        <span class="mat-desc">Madeira brasileira | Veios marcantes</span>
+                    </div>
+                </div>
+                <div class="mat-card">
+                    <div class="mat-bg" style="background-image: url('https://images.unsplash.com/photo-1620626011761-996317b8d101?q=80&w=2069&auto=format&fit=crop');"></div>
+                    <div class="mat-overlay">
+                        <h3 class="mat-title">Preto Absoluto</h3>
+                        <span class="mat-desc">MDF Anti-impressão digital | Ultra fosco</span>
+                    </div>
+                </div>
+                <div class="mat-card">
+                    <div class="mat-bg" style="background-image: url('https://images.unsplash.com/photo-1600121848594-d8644e57abab?q=80&w=2070&auto=format&fit=crop');"></div>
+                    <div class="mat-overlay">
+                        <h3 class="mat-title">MDF Cinza Sagrado</h3>
+                        <span class="mat-desc">Tonalidade neutra | Base estrutural elegante</span>
+                    </div>
+                </div>
+                <div class="mat-card">
+                    <div class="mat-bg" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop');"></div>
+                    <div class="mat-overlay">
+                        <h3 class="mat-title">Palhinha Indiana</h3>
+                        <span class="mat-desc">Fibras naturais | Transparência e ventilação</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. GALERIA EDITORIAL -->
+    <section class="gallery-section" id="projetos">
+        <div class="container">
+            <div class="gal-header gs-fade">
+                <h2>Projetos<br>Assinados</h2>
+                <a href="#" class="btn-primary">Ver Portfólio Completo</a>
+            </div>
+
+            <div class="gallery-grid">
+                <div class="g-item g-item-1 gs-fade">
+                    <img src="https://images.unsplash.com/photo-1600210492493-0946911123ea?q=80&w=2070&auto=format&fit=crop" alt="Cozinha Integrada" class="parallax-img">
+                    <div class="g-caption">
+                        <span>Residência Alpha</span>
+                        <h3>Cozinha Integrada em Freijó</h3>
+                    </div>
+                </div>
+                <div class="g-item g-item-2 gs-fade">
+                    <img src="https://images.unsplash.com/photo-1593696140826-c58b021acf8b?q=80&w=2070&auto=format&fit=crop" alt="Closet Premium" class="parallax-img">
+                    <div class="g-caption">
+                        <span>Projeto Lumière</span>
+                        <h3>Closet Iluminado</h3>
+                    </div>
+                </div>
+                <div class="g-item g-item-3 gs-fade">
+                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop" alt="Home Office" class="parallax-img">
+                    <div class="g-caption">
+                        <span>Apartamento Vértice</span>
+                        <h3>Home Office Executivo</h3>
+                    </div>
+                </div>
+                <div class="g-item g-item-4 gs-fade">
+                    <img src="https://images.unsplash.com/photo-1600210491892-03d54c13a072?q=80&w=2070&auto=format&fit=crop" alt="Painel Sala" class="parallax-img">
+                    <div class="g-caption">
+                        <span>Cobertura Leste</span>
+                        <h3>Painel Ripado em Carvalho</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. VENDAS E BENEFÍCIOS -->
+    <section class="sales-section">
+        <div class="container">
+            <h2 class="sales-title gs-fade">Planejado não é só móvel. É espaço <i>melhor aproveitado</i>, rotina mais leve e valorização do seu imóvel.</h2>
+            
+            <div class="benefits-grid gs-fade">
+                <div class="benefit-card">
+                    <i data-lucide="maximize-2" class="benefit-icon"></i>
+                    <h4>Aproveitamento Total</h4>
+                    <p>Otimizamos cada centímetro quadrado do seu ambiente com marcenaria inteligente.</p>
+                </div>
+                <div class="benefit-card">
+                    <i data-lucide="pen-tool" class="benefit-icon"></i>
+                    <h4>Design Exclusivo</h4>
+                    <p>Nenhum projeto é igual. O design reflete exatamente a sua personalidade e necessidade.</p>
+                </div>
+                <div class="benefit-card">
+                    <i data-lucide="award" class="benefit-icon"></i>
+                    <h4>Acabamento Premium</h4>
+                    <p>Ferragens Blum e madeiras de alta densidade que garantem décadas de durabilidade.</p>
+                </div>
+                <div class="benefit-card">
+                    <i data-lucide="tool" class="benefit-icon"></i>
+                    <h4>Instalação Própria</h4>
+                    <p>Equipe interna treinada para montar o seu projeto de forma limpa, rápida e segura.</p>
+                </div>
+                <div class="benefit-card">
+                    <i data-lucide="headphones" class="benefit-icon"></i>
+                    <h4>Pós-Venda Fiel</h4>
+                    <p>Acompanhamento real. Garantia estendida e suporte dedicado sempre que precisar.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. PROVA SOCIAL -->
+    <section class="testim-section">
+        <div class="container">
+            <div class="t-quote gs-fade">
+                "A Madeira Nobre conseguiu traduzir exatamente o que eu imaginava para a minha cozinha. A qualidade das ferragens e a perfeição nos recortes da madeira são impressionantes. Transformou a nossa casa."
+            </div>
+            <div class="t-author gs-fade">Ricardo & Mariana - Apartamento Jardins</div>
+        </div>
+    </section>
+
+    <!-- 8. CTA FINAL -->
+    <section class="cta-section">
+        <div class="container gs-fade">
+            <h2>Vamos desenhar o seu<br>próximo ambiente?</h2>
+            <a href="https://wa.me/SEUNUMERO" target="_blank" class="btn-primary" style="background:#FFF; color:#111; border-color:#FFF; padding: 1.2rem 3rem; font-size:1rem; margin-top: 1rem;">Chamar no WhatsApp</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container" style="display:flex; justify-content:space-between; color:#555; font-size:0.8rem; padding: 2rem 0; border-top: 1px solid rgba(255,255,255,0.1);">
+            <p>&copy; 2024 Madeira Nobre Planejados. Todos os direitos reservados.</p>
+            <p>Design por Devtech</p>
+        </div>
+    </footer>
+
+    <!-- Scripts da Página (GSAP) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <!-- Scripts do WebGL (Three.js) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+
+    <script>
+        lucide.createIcons();
+
+        document.addEventListener('DOMContentLoaded', () => {
+            gsap.registerPlugin(ScrollTrigger);
+
+            // HEADER SCROLL
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) header.classList.add('scrolled');
+                else header.classList.remove('scrolled');
+            });
+
+            // HERO ANIMATION (A Transformação)
+            const loaderText = document.getElementById('loader-text');
+            const loaderFill = document.getElementById('loader-fill');
+            const heroTl = gsap.timeline({ delay: 0.5 });
+            
+            heroTl.to(loaderFill, { width: '100%', duration: 1.5, ease: 'power2.inOut', onUpdate: function() {
+                if(this.progress() > 0.5) loaderText.innerText = 'Renderizando projeto...';
+            }})
+            .to('.hero-loader', { opacity: 0, duration: 0.5 })
+            .to('#planned-layer', { clipPath: 'inset(0% 0 0 0)', duration: 2, ease: 'power3.inOut' })
+            .fromTo('.gs-reveal', { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 1, stagger: 0.2, ease: 'power2.out' }, "-=1");
+
+            // SCROLL HORIZONTAL (PROCESSO)
+            const processTrack = document.getElementById('process-track');
+            const processWrapper = document.getElementById('process-wrapper');
+            function getScrollAmount() { return -(processTrack.scrollWidth - window.innerWidth + 100); }
+            
+            if (window.innerWidth > 992) {
+                const tween = gsap.to(processTrack, { x: getScrollAmount, ease: "none" });
+                ScrollTrigger.create({
+                    trigger: processWrapper, start: "top 20%", end: () => `+=${getScrollAmount() * -1}`,
+                    pin: true, animation: tween, scrub: 1, invalidateOnRefresh: true
+                });
+            }
+
+            // GERAL REVEALS
+            gsap.utils.toArray('.gs-fade').forEach(element => {
+                gsap.fromTo(element, 
+                    { y: 50, opacity: 0 },
+                    { y: 0, opacity: 1, duration: 1, ease: 'power3.out', scrollTrigger: { trigger: element, start: "top 85%" } }
+                );
+            });
+
+            gsap.utils.toArray('.parallax-img').forEach(img => {
+                gsap.to(img, {
+                    yPercent: 15, ease: "none",
+                    scrollTrigger: { trigger: img.parentElement, start: "top bottom", end: "bottom top", scrub: true }
+                });
+            });
+
+            // ==========================================
+            // THREE.JS: EDITOR 3D REAL (INTERATIVO)
+            // ==========================================
+            
+            const container = document.getElementById('webgl-editor');
+            const scene = new THREE.Scene();
+            scene.background = new THREE.Color(0xF0F0F0); // Cor premium clara
+            
+            // Câmara
+            const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 100);
+            camera.position.set(12, 10, 16);
+
+            // Renderer
+            const renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer.setSize(container.clientWidth, container.clientHeight);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            renderer.shadowMap.enabled = true;
+            renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+            renderer.toneMapping = THREE.ACESFilmicToneMapping;
+            container.appendChild(renderer.domElement);
+
+            // Controlos (Câmara)
+            const orbitControls = new THREE.OrbitControls(camera, renderer.domElement);
+            orbitControls.enableDamping = true;
+            orbitControls.dampingFactor = 0.05;
+            orbitControls.maxPolarAngle = Math.PI / 2 - 0.05; // Não olhar por baixo do chão
+            orbitControls.minDistance = 5;
+            orbitControls.maxDistance = 30;
+            orbitControls.target.set(0, 1.5, 0);
+
+            // Iluminação Premium
+            const ambient = new THREE.AmbientLight(0xfff5e6, 0.7);
+            scene.add(ambient);
+
+            const dirLight = new THREE.DirectionalLight(0xffeedd, 1.2);
+            dirLight.position.set(15, 20, 15);
+            dirLight.castShadow = true;
+            dirLight.shadow.mapSize.width = 2048;
+            dirLight.shadow.mapSize.height = 2048;
+            dirLight.shadow.bias = -0.0005;
+            scene.add(dirLight);
+
+            const fillLight = new THREE.PointLight(0xeef5ff, 0.4, 40);
+            fillLight.position.set(-15, 10, -15);
+            scene.add(fillLight);
+            
+            // Texturas Procedurais
+            function generateWoodTexture(c1, c2) {
+                const canvas = document.createElement('canvas'); canvas.width = 512; canvas.height = 512;
+                const ctx = canvas.getContext('2d');
+                ctx.fillStyle = c1; ctx.fillRect(0, 0, 512, 512);
+                for(let i=0; i<600; i++) {
+                    ctx.fillStyle = c2; ctx.globalAlpha = Math.random() * 0.15;
+                    ctx.fillRect(Math.random()*512, 0, Math.random()*2, 512);
+                }
+                const tex = new THREE.CanvasTexture(canvas);
+                tex.wrapS = THREE.RepeatWrapping; tex.wrapT = THREE.RepeatWrapping;
+                return tex;
+            }
+
+            function generateMarbleTexture() {
+                const canvas = document.createElement('canvas'); canvas.width = 1024; canvas.height = 1024;
+                const ctx = canvas.getContext('2d');
+                ctx.fillStyle = '#fdfdfd'; ctx.fillRect(0, 0, 1024, 1024);
+                ctx.strokeStyle = 'rgba(0,0,0,0.03)';
+                for(let i=0; i<60; i++) {
+                    ctx.lineWidth = 1 + Math.random() * 6; ctx.beginPath();
+                    let x = Math.random() * 1024, y = 0; ctx.moveTo(x, y);
+                    for(let j=0; j<10; j++) { x += (Math.random() - 0.5) * 150; y += 100; ctx.lineTo(x, y); }
+                    ctx.stroke();
+                }
+                const tex = new THREE.CanvasTexture(canvas);
+                return tex;
+            }
+
+            function generateSlattedTexture(c) {
+                const canvas = document.createElement('canvas'); canvas.width = 512; canvas.height = 512;
+                const ctx = canvas.getContext('2d');
+                ctx.fillStyle = c; ctx.fillRect(0, 0, 512, 512);
+                ctx.fillStyle = 'rgba(0,0,0,0.5)';
+                for(let i=0; i<512; i+=12) { ctx.fillRect(i, 0, 2, 512); }
+                const tex = new THREE.CanvasTexture(canvas);
+                tex.wrapS = THREE.RepeatWrapping; tex.wrapT = THREE.RepeatWrapping;
+                return tex;
+            }
+
+            const texCarvalho = generateWoodTexture('#C19A6B', '#8C6740');
+            const texFreijo = generateWoodTexture('#8C5A35', '#5E3A20');
+            const texMarmore = generateMarbleTexture();
+            const texRipadoCarvalho = generateSlattedTexture('#C19A6B');
+
+            // Materiais PBR
+            const materialsLib = {
+                carvalho: new THREE.MeshPhysicalMaterial({ map: texCarvalho, roughness: 0.7, clearcoat: 0.1 }),
+                freijo: new THREE.MeshPhysicalMaterial({ map: texFreijo, roughness: 0.6, clearcoat: 0.1 }),
+                cinza: new THREE.MeshPhysicalMaterial({ color: 0x888888, roughness: 0.8 }),
+                branco: new THREE.MeshPhysicalMaterial({ color: 0xF9F9F9, roughness: 0.15, clearcoat: 1.0, clearcoatRoughness: 0.1 }),
+                preto: new THREE.MeshPhysicalMaterial({ color: 0x1A1A1A, roughness: 0.85, metalness: 0.2 }),
+                palhinha: new THREE.MeshPhysicalMaterial({ color: 0xE6D5A7, roughness: 0.9, map: generateWoodTexture('#E6D5A7', '#C4B283') }),
+                
+                floor: new THREE.MeshStandardMaterial({ color: 0xEAEAEA, roughness: 0.3, metalness: 0.1 }),
+                wall: new THREE.MeshStandardMaterial({ color: 0xF2F2F2, roughness: 1.0 }),
+                marble: new THREE.MeshPhysicalMaterial({ map: texMarmore, roughness: 0.1, clearcoat: 1.0 }),
+                metal: new THREE.MeshStandardMaterial({ color: 0x222222, roughness: 0.3, metalness: 0.8 }),
+                metalGold: new THREE.MeshStandardMaterial({ color: 0xD4AF37, roughness: 0.2, metalness: 0.9 }),
+                glass: new THREE.MeshPhysicalMaterial({ color: 0x000000, metalness: 0.9, roughness: 0.1, transparent: true, opacity: 0.6 }),
+                mirror: new THREE.MeshPhysicalMaterial({ color: 0xAAAAAA, metalness: 1.0, roughness: 0.0 }),
+                fabricSoft: new THREE.MeshStandardMaterial({ color: 0xE8E5DF, roughness: 1.0 }),
+                fabricDark: new THREE.MeshStandardMaterial({ color: 0x555555, roughness: 1.0 }),
+                plant: new THREE.MeshStandardMaterial({ color: 0x3A5311, roughness: 0.8 }),
+                pot: new THREE.MeshStandardMaterial({ color: 0xCCCCCC, roughness: 0.4 }),
+                emissiveWhite: new THREE.MeshBasicMaterial({ color: 0xffffff })
+            };
+
+            // Estrutura Base
+            const roomGroup = new THREE.Group();
+            
+            const floor = new THREE.Mesh(new THREE.PlaneGeometry(40, 40), materialsLib.floor);
+            floor.rotation.x = -Math.PI / 2; floor.receiveShadow = true;
+            roomGroup.add(floor);
+
+            const wallBack = new THREE.Mesh(new THREE.BoxGeometry(40, 14, 1), materialsLib.wall);
+            wallBack.position.set(0, 7, -12); wallBack.receiveShadow = true;
+            roomGroup.add(wallBack);
+
+            const wallLeft = new THREE.Mesh(new THREE.BoxGeometry(1, 14, 40), materialsLib.wall);
+            wallLeft.position.set(-16, 7, 0); wallLeft.receiveShadow = true;
+            roomGroup.add(wallLeft);
+
+            const ceiling = new THREE.Mesh(new THREE.BoxGeometry(40, 1, 40), materialsLib.wall);
+            ceiling.position.set(0, 14.5, 0); ceiling.receiveShadow = true;
+            roomGroup.add(ceiling);
+
+            for(let x=-12; x<=12; x+=8) {
+                for(let z=-8; z<=8; z+=8) {
+                    const spot = new THREE.Mesh(new THREE.CylinderGeometry(0.4, 0.4, 0.1, 16), materialsLib.emissiveWhite);
+                    spot.position.set(x, 13.9, z);
+                    roomGroup.add(spot);
+                }
+            }
+            scene.add(roomGroup);
+
+            // Utils
+            function createMesh(geo, mat) {
+                const mesh = new THREE.Mesh(geo, mat);
+                mesh.castShadow = true; mesh.receiveShadow = true;
+                return mesh;
+            }
+
+            function buildPlant(x, y, z) {
+                const g = new THREE.Group();
+                const pot = createMesh(new THREE.CylinderGeometry(0.7, 0.5, 1.4, 16), materialsLib.pot);
+                pot.position.y = 0.7; g.add(pot);
+                const leaves = createMesh(new THREE.SphereGeometry(1.4, 12, 12), materialsLib.plant);
+                leaves.position.y = 2.0; leaves.scale.set(1, 1.6, 1); g.add(leaves);
+                g.position.set(x, y, z);
+                return g;
+            }
+
+            function buildBookshelfProps(x, y, z, width) {
+                const g = new THREE.Group();
+                for(let i=0; i<6; i++) {
+                    const h = 0.7 + Math.random()*0.5;
+                    const book = createMesh(new THREE.BoxGeometry(0.18, h, 0.6), new THREE.MeshStandardMaterial({color: Math.random() * 0xffffff, roughness: 0.8}));
+                    book.position.set((Math.random() - 0.5)*width*0.8, h/2, 0);
+                    book.rotation.z = (Math.random() - 0.5) * 0.2;
+                    g.add(book);
+                }
+                g.position.set(x, y, z);
+                return g;
+            }
+
+            function buildRug(w, d) {
+                const rug = createMesh(new THREE.BoxGeometry(w, 0.05, d), materialsLib.fabricSoft);
+                rug.position.y = 0.025;
+                return rug;
+            }
+
+            let interactables = [];
+            let currentEnvGroup = null;
+            let currentRoomType = '';
+            let selectedObject = null;
+            let selectionBox = null;
+            let currentMaterialKey = 'carvalho';
+            
+            const raycaster = new THREE.Raycaster();
+            const mouse = new THREE.Vector2();
+            const dragPlane = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0);
+            const intersectPoint = new THREE.Vector3();
+            const dragOffset = new THREE.Vector3();
+            let isDragging = false;
+
+            // Room Generators
+            const envSetups = {
+                cozinha: () => {
+                    const g = new THREE.Group();
+                    
+                    const baseMat = materialsLib[currentMaterialKey] || materialsLib['carvalho'];
+
+                    // Armários Fundo (Static)
+                    const armFundo = createMesh(new THREE.BoxGeometry(16, 12, 1.5), baseMat);
+                    armFundo.position.set(0, 6, -10.75); armFundo.userData.changeable = true; g.add(armFundo);
+                    
+                    const frigo = createMesh(new THREE.BoxGeometry(2.5, 6, 1.6), materialsLib.metal);
+                    frigo.position.set(-5, 3, -10.7); g.add(frigo);
+                    
+                    const forno1 = createMesh(new THREE.BoxGeometry(1.8, 1.4, 1.6), materialsLib.glass);
+                    forno1.position.set(5, 5, -10.7); g.add(forno1);
+                    const forno2 = createMesh(new THREE.BoxGeometry(1.8, 1.4, 1.6), materialsLib.glass);
+                    forno2.position.set(5, 3.2, -10.7); g.add(forno2);
+
+                    const bancadaEsq = createMesh(new THREE.BoxGeometry(2, 2.7, 10), baseMat);
+                    bancadaEsq.position.set(-14.5, 1.35, -3); bancadaEsq.userData.changeable = true; g.add(bancadaEsq);
+                    const tampoEsq = createMesh(new THREE.BoxGeometry(2.2, 0.15, 10.2), materialsLib.marble);
+                    tampoEsq.position.set(-14.5, 2.775, -3); g.add(tampoEsq);
+                    
+                    const armSup = createMesh(new THREE.BoxGeometry(1.8, 4, 10), baseMat);
+                    armSup.position.set(-14.6, 9, -3); armSup.userData.changeable = true; g.add(armSup);
+                    
+                    const ledLight = new THREE.PointLight(0xfff0dd, 0.8, 10);
+                    ledLight.position.set(-13.5, 6.8, -3);
+                    g.add(ledLight); 
+
+                    // Ilha (Draggable)
+                    const ilhaGroup = new THREE.Group();
+                    ilhaGroup.userData.isFurniture = true;
+                    
+                    const ilhaBase = createMesh(new THREE.BoxGeometry(8, 2.7, 3), baseMat);
+                    ilhaBase.position.set(0, 1.35, 0); ilhaBase.userData.changeable = true; ilhaGroup.add(ilhaBase);
+                    
+                    const ilhaTampo = createMesh(new THREE.BoxGeometry(8.5, 0.2, 4), materialsLib.marble);
+                    ilhaTampo.position.set(0, 2.8, 0.5); ilhaGroup.add(ilhaTampo);
+                    
+                    const cooktop = createMesh(new THREE.BoxGeometry(2.5, 0.05, 1.5), materialsLib.glass);
+                    cooktop.position.set(0, 2.925, 0); ilhaGroup.add(cooktop);
+                    
+                    const exaustor = createMesh(new THREE.CylinderGeometry(1, 1, 6, 32), materialsLib.metal);
+                    exaustor.position.set(0, 11, 0); ilhaGroup.add(exaustor);
+
+                    for(let x=-2.5; x<=2.5; x+=2.5) {
+                        const leg = createMesh(new THREE.CylinderGeometry(0.08, 0.08, 2.2), materialsLib.metal);
+                        leg.position.set(x, 1.1, 1.8); ilhaGroup.add(leg);
+                        const seat = createMesh(new THREE.CylinderGeometry(0.7, 0.7, 0.15), materialsLib.fabricDark);
+                        seat.position.set(x, 2.275, 1.8); ilhaGroup.add(seat);
+                    }
+                    
+                    ilhaGroup.position.set(2, 0, -3);
+                    g.add(ilhaGroup);
+
+                    g.add(buildPlant(9, 0, -8));
+                    return g;
+                },
+                sala: () => {
+                    const g = new THREE.Group();
+                    
+                    const baseMat = materialsLib[currentMaterialKey] || materialsLib['carvalho'];
+
+                    const tapete = buildRug(16, 12);
+                    g.add(tapete);
+
+                    // Painel TV
+                    const painelMaterial = baseMat.clone();
+                    painelMaterial.map = texRipadoCarvalho;
+                    const painel = createMesh(new THREE.BoxGeometry(22, 14, 0.3), painelMaterial);
+                    painel.position.set(0, 7, -11.35); painel.userData.changeable = true; g.add(painel);
+                    
+                    const rack = createMesh(new THREE.BoxGeometry(14, 1.2, 1.5), materialsLib.branco);
+                    rack.position.set(0, 2, -10.5); g.add(rack);
+                    
+                    const tv = createMesh(new THREE.BoxGeometry(8, 4.5, 0.1), materialsLib.glass);
+                    tv.position.set(0, 6.5, -11); g.add(tv);
+
+                    const quadro1 = createMesh(new THREE.BoxGeometry(0.1, 5, 3), materialsLib.preto);
+                    quadro1.position.set(-15.4, 7, -4); g.add(quadro1);
+                    const quadro2 = createMesh(new THREE.BoxGeometry(0.1, 5, 3), materialsLib.preto);
+                    quadro2.position.set(-15.4, 7, -0.5); g.add(quadro2);
+
+                    const lampBase = createMesh(new THREE.CylinderGeometry(0.15, 0.15, 6), materialsLib.metalGold);
+                    lampBase.position.set(-7, 3, -8); g.add(lampBase);
+                    const lampShade = createMesh(new THREE.ConeGeometry(1.2, 1.8, 16), materialsLib.branco);
+                    lampShade.position.set(-7, 6.5, -8); g.add(lampShade);
+                    const ledLight = new THREE.PointLight(0xffddaa, 0.5, 15);
+                    ledLight.position.set(-7, 5, -8); g.add(ledLight);
+
+                    g.add(buildPlant(8, 0, -9));
+
+                    // Sofá (Draggable)
+                    const sofaGroup = new THREE.Group();
+                    sofaGroup.userData.isFurniture = true;
+                    
+                    const sofaBack = createMesh(new THREE.BoxGeometry(12, 2.2, 1.2), materialsLib.fabricDark);
+                    sofaBack.position.set(0, 1.1, 1.5); sofaGroup.add(sofaBack);
+                    const sofaSeat = createMesh(new THREE.BoxGeometry(12, 1.2, 3), materialsLib.fabricDark);
+                    sofaSeat.position.set(0, 0.6, 0); sofaGroup.add(sofaSeat);
+                    const sofaChaise = createMesh(new THREE.BoxGeometry(3, 1.2, 6), materialsLib.fabricDark);
+                    sofaChaise.position.set(4.5, 0.6, -1.5); sofaGroup.add(sofaChaise);
+                    
+                    sofaGroup.position.set(0, 0, 2.5);
+                    g.add(sofaGroup);
+
+                    // Mesa de Centro (Draggable)
+                    const tableGroup = new THREE.Group();
+                    tableGroup.userData.isFurniture = true;
+                    
+                    const centerTable = createMesh(new THREE.CylinderGeometry(2, 2, 1, 32), baseMat);
+                    centerTable.position.set(-1.5, 0.5, 0); centerTable.userData.changeable = true; tableGroup.add(centerTable);
+                    const centerTable2 = createMesh(new THREE.CylinderGeometry(1.5, 1.5, 1.4, 32), materialsLib.marble);
+                    centerTable2.position.set(1.5, 0.7, -0.5); tableGroup.add(centerTable2);
+                    
+                    tableGroup.position.set(0, 0, -2);
+                    g.add(tableGroup);
+
+                    return g;
+                },
+                closet: () => {
+                    const g = new THREE.Group();
+                    const baseMat = materialsLib[currentMaterialKey] || materialsLib['carvalho'];
+                    
+                    const tapete = buildRug(10, 14);
+                    g.add(tapete);
+
+                    // Armários
+                    const armFundo = createMesh(new THREE.BoxGeometry(20, 13, 2), baseMat);
+                    armFundo.position.set(0, 6.5, -10.5); armFundo.userData.changeable = true; g.add(armFundo);
+                    
+                    const armEsq = createMesh(new THREE.BoxGeometry(2, 13, 16), baseMat);
+                    armEsq.position.set(-14.5, 6.5, -1); armEsq.userData.changeable = true; g.add(armEsq);
+
+                    const espelho = createMesh(new THREE.BoxGeometry(0.2, 12, 8), materialsLib.mirror);
+                    espelho.position.set(8, 6, -4); espelho.rotation.y = -Math.PI/6; g.add(espelho);
+
+                    for(let x=-7; x<=7; x+=4.5) {
+                        const nicho = createMesh(new THREE.BoxGeometry(4, 11, 1), materialsLib.preto);
+                        nicho.position.set(x, 7, -10); g.add(nicho);
+                        const cabide = createMesh(new THREE.CylinderGeometry(0.06, 0.06, 3.8), materialsLib.metalGold);
+                        cabide.rotation.z = Math.PI/2; cabide.position.set(x, 10, -9.8); g.add(cabide);
+                        
+                        for(let rx=-1.5; rx<=1.5; rx+=0.5) {
+                            const roupa = createMesh(new THREE.BoxGeometry(0.15, 3, 1), materialsLib.fabricSoft);
+                            roupa.position.set(x + rx, 8.2, -9.8); g.add(roupa);
+                        }
+                    }
+
+                    // Ilha Central (Draggable)
+                    const ilhaGroup = new THREE.Group();
+                    ilhaGroup.userData.isFurniture = true;
+                    
+                    const ilha = createMesh(new THREE.BoxGeometry(5, 2.5, 3), baseMat);
+                    ilha.position.set(0, 1.25, 0); ilha.userData.changeable = true; ilhaGroup.add(ilha);
+                    const ilhaVidro = createMesh(new THREE.BoxGeometry(4.8, 0.2, 2.8), materialsLib.glass);
+                    ilhaVidro.position.set(0, 2.6, 0); ilhaGroup.add(ilhaVidro);
+                    const puff = createMesh(new THREE.CylinderGeometry(1.5, 1.5, 1.5, 32), materialsLib.fabricSoft);
+                    puff.position.set(0, 0.75, 4); ilhaGroup.add(puff);
+                    
+                    ilhaGroup.position.set(0, 0, 0);
+                    g.add(ilhaGroup);
+
+                    return g;
+                },
+                escritorio: () => {
+                    const g = new THREE.Group();
+                    const baseMat = materialsLib[currentMaterialKey] || materialsLib['carvalho'];
+                    
+                    const tapete = buildRug(12, 10);
+                    g.add(tapete);
+
+                    // Estante Fundo
+                    const estante = createMesh(new THREE.BoxGeometry(20, 14, 1.5), baseMat);
+                    estante.position.set(0, 7, -10.75); estante.userData.changeable = true; g.add(estante);
+                    
+                    for(let y=3; y<=12; y+=2.5) {
+                        const shelf = createMesh(new THREE.BoxGeometry(19, 0.15, 1.6), materialsLib.branco);
+                        shelf.position.set(0, y, -10.2); g.add(shelf);
+                        g.add(buildBookshelfProps(-6, y, -10.2, 5));
+                        g.add(buildBookshelfProps(6, y, -10.2, 5));
+                    }
+
+                    g.add(buildPlant(-10, 0, -6));
+
+                    // Mesa Executiva (Draggable)
+                    const mesaGroup = new THREE.Group();
+                    mesaGroup.userData.isFurniture = true;
+
+                    const mesaTampo = createMesh(new THREE.BoxGeometry(7, 0.2, 3), baseMat);
+                    mesaTampo.position.set(0, 2.8, 0); mesaTampo.userData.changeable = true; mesaGroup.add(mesaTampo);
+                    const mesaBaseL = createMesh(new THREE.BoxGeometry(0.8, 2.8, 2.5), materialsLib.metal);
+                    mesaBaseL.position.set(-3, 1.4, 0); mesaGroup.add(mesaBaseL);
+                    const mesaBaseR = createMesh(new THREE.BoxGeometry(0.8, 2.8, 2.5), materialsLib.metal);
+                    mesaBaseR.position.set(3, 1.4, 0); mesaGroup.add(mesaBaseR);
+
+                    const chairSeat = createMesh(new THREE.BoxGeometry(2, 0.3, 2), materialsLib.preto);
+                    chairSeat.position.set(0, 1.6, 2.5); mesaGroup.add(chairSeat);
+                    const chairBack = createMesh(new THREE.BoxGeometry(2, 2.5, 0.3), materialsLib.preto);
+                    chairBack.position.set(0, 2.8, 3.35); mesaGroup.add(chairBack);
+                    const chairLeg = createMesh(new THREE.CylinderGeometry(0.15, 0.15, 1.6), materialsLib.metal);
+                    chairLeg.position.set(0, 0.8, 2.5); mesaGroup.add(chairLeg);
+
+                    const laptop = createMesh(new THREE.BoxGeometry(1.5, 0.05, 1), materialsLib.metal);
+                    laptop.position.set(0, 2.925, 0); mesaGroup.add(laptop);
+                    const monitor = createMesh(new THREE.BoxGeometry(1.5, 1, 0.05), materialsLib.metal);
+                    monitor.position.set(0, 3.4, -0.475); monitor.rotation.x = -Math.PI/12; mesaGroup.add(monitor);
+
+                    mesaGroup.position.set(0, 0, -2);
+                    g.add(mesaGroup);
+
+                    return g;
+                },
+                quarto: () => {
+                    const g = new THREE.Group();
+                    const baseMat = materialsLib[currentMaterialKey] || materialsLib['carvalho'];
+
+                    const tapete = buildRug(14, 14);
+                    tapete.position.set(0, 0, -2);
+                    g.add(tapete);
+
+                    // Cabeceira (Static but changeable)
+                    const cabecMadeira = createMesh(new THREE.BoxGeometry(24, 6, 0.4), baseMat);
+                    cabecMadeira.position.set(0, 3, -11); cabecMadeira.userData.changeable = true; g.add(cabecMadeira);
+                    
+                    const cabecEstofada = createMesh(new THREE.BoxGeometry(10, 4, 0.3), materialsLib.fabricDark);
+                    cabecEstofada.position.set(0, 2.5, -10.6); g.add(cabecEstofada);
+
+                    const painelCima = createMesh(new THREE.BoxGeometry(12, 8.5, 0.2), baseMat);
+                    painelCima.position.set(0, 7.75, -10.6); painelCima.userData.changeable = true; g.add(painelCima);
+
+                    const roupeiro = createMesh(new THREE.BoxGeometry(2.5, 14, 20), baseMat);
+                    roupeiro.position.set(-14.25, 7, -2); roupeiro.userData.changeable = true; g.add(roupeiro);
+                    const espelhoG = createMesh(new THREE.BoxGeometry(0.1, 13.5, 9), materialsLib.mirror);
+                    espelhoG.position.set(-12.9, 7, 2); g.add(espelhoG);
+
+                    // Mesas de Cabeceira e Cama (Draggable Group)
+                    const bedGroup = new THREE.Group();
+                    bedGroup.userData.isFurniture = true;
+
+                    const camaBase = createMesh(new THREE.BoxGeometry(7, 1.2, 8), materialsLib.fabricSoft);
+                    camaBase.position.set(0, 0.6, -6.5); bedGroup.add(camaBase);
+                    const colchao = createMesh(new THREE.BoxGeometry(6.6, 0.5, 7.8), materialsLib.branco);
+                    colchao.position.set(0, 1.45, -6.5); bedGroup.add(colchao);
+                    const manta = createMesh(new THREE.BoxGeometry(6.8, 0.2, 4), materialsLib.fabricDark);
+                    manta.position.set(0, 1.75, -4); bedGroup.add(manta);
+                    
+                    for(let x=-2; x<=2; x+=4) {
+                        const almofada = createMesh(new THREE.BoxGeometry(2.5, 0.4, 1.2), materialsLib.fabricSoft);
+                        almofada.position.set(x, 1.8, -9.5); almofada.rotation.x = Math.PI/12; bedGroup.add(almofada);
+                    }
+
+                    for(let x=-6.5; x<=6.5; x+=13) {
+                        const mesa = createMesh(new THREE.BoxGeometry(2, 0.8, 1.5), baseMat);
+                        mesa.position.set(x, 2, -10); mesa.userData.changeable = true; bedGroup.add(mesa);
+                        
+                        const lampBase = createMesh(new THREE.CylinderGeometry(0.3, 0.3, 0.1), materialsLib.metalGold);
+                        lampBase.position.set(x, 2.45, -10); bedGroup.add(lampBase);
+                        const lampHaste = createMesh(new THREE.CylinderGeometry(0.05, 0.05, 1.2), materialsLib.metalGold);
+                        lampHaste.position.set(x, 3.05, -10); bedGroup.add(lampHaste);
+                        const lampShade = createMesh(new THREE.SphereGeometry(0.5, 16, 16, 0, Math.PI*2, 0, Math.PI/2), materialsLib.branco);
+                        lampShade.position.set(x, 3.65, -10); bedGroup.add(lampShade);
+                        
+                        const ledLight = new THREE.PointLight(0xffddaa, 0.4, 10);
+                        ledLight.position.set(x, 3.5, -10);
+                        bedGroup.add(ledLight);
+                    }
+
+                    bedGroup.position.set(0, 0, 0);
+                    g.add(bedGroup);
+
+                    return g;
+                }
+            };
+
+            // Funções UI -> 3D
+            window.loadRoom = function(type) {
+                document.querySelectorAll('.int-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                    if (btn.getAttribute('onclick') && btn.getAttribute('onclick').includes(`'${type}'`)) {
+                        btn.classList.add('active');
+                    }
+                });
+                
+                selectObject(null);
+
+                const spawnNewRoom = () => {
+                    interactables = [];
+                    if(envSetups[type]) {
+                        currentEnvGroup = envSetups[type]();
+                        currentEnvGroup.position.y = 10; // Start above
+                        scene.add(currentEnvGroup);
+                        
+                        // Povoar interactables apenas com os móveis soltos
+                        currentEnvGroup.children.forEach(child => {
+                            if(child.userData.isFurniture) {
+                                interactables.push(child);
+                            }
+                        });
+
+                        // Animação de entrada
+                        gsap.to(currentEnvGroup.position, { y: 0, duration: 0.8, ease: "bounce.out" });
+                        
+                        // Aplicar material atual para manter consistência
+                        applyMaterial(currentMaterialKey);
+                    }
+                    currentRoomType = type;
+                };
+
+                if(currentEnvGroup) {
+                    gsap.to(currentEnvGroup.position, {
+                        y: -10, duration: 0.5, ease: "power2.in",
+                        onComplete: () => {
+                            scene.remove(currentEnvGroup);
+                            currentEnvGroup.traverse(child => { if(child.isMesh) child.geometry.dispose(); });
+                            spawnNewRoom();
+                        }
+                    });
+                } else {
+                    spawnNewRoom();
+                }
+            };
+
+            window.addFurnitureItem = function() {
+                const baseMat = materialsLib[currentMaterialKey] || materialsLib['carvalho'];
+                const g = new THREE.Group(); g.userData.isFurniture = true;
+                const box = createMesh(new THREE.BoxGeometry(2, 2, 2), baseMat);
+                box.position.y = 1; box.userData.changeable = true; g.add(box);
+                
+                g.position.set(0, 0, 2);
+                if (currentEnvGroup) {
+                    currentEnvGroup.add(g);
+                    interactables.push(g);
+                    selectObject(g);
+                }
+            };
+
+            window.resetScene = function() {
+                if(currentRoomType) loadRoom(currentRoomType);
+            };
+
+            window.deleteSelected = function() {
+                if(selectedObject && currentEnvGroup) {
+                    currentEnvGroup.remove(selectedObject);
+                    interactables = interactables.filter(i => i !== selectedObject);
+                    selectObject(null);
+                }
+            };
+
+            window.applyMaterial = function(matKey) {
+                if(!materialsLib[matKey]) matKey = 'carvalho';
+
+                document.querySelectorAll('.mat-btn').forEach(b => {
+                    b.classList.remove('active');
+                    if (b.getAttribute('onclick') && b.getAttribute('onclick').includes(`'${matKey}'`)) {
+                        b.classList.add('active');
+                    }
+                });
+                currentMaterialKey = matKey;
+
+                if(currentEnvGroup && materialsLib[matKey]) {
+                    currentEnvGroup.traverse(child => {
+                        if(child.isMesh && child.userData.changeable) {
+                            child.material = materialsLib[matKey];
+                        }
+                    });
+                }
+            };
+
+            function selectObject(objGroup) {
+                selectedObject = objGroup;
+                const matPanel = document.getElementById('material-panel');
+                
+                if(selectedObject) {
+                    matPanel.style.display = 'block';
+                    if(!selectionBox) {
+                        selectionBox = new THREE.BoxHelper(selectedObject, 0x111111);
+                        scene.add(selectionBox);
+                    } else {
+                        selectionBox.setFromObject(selectedObject);
+                        selectionBox.visible = true;
+                    }
+                } else {
+                    matPanel.style.display = 'none';
+                    if(selectionBox) selectionBox.visible = false;
+                }
+            }
+
+            // Drag Logic
+            renderer.domElement.addEventListener('pointerdown', (e) => {
+                const rect = renderer.domElement.getBoundingClientRect();
+                mouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+                mouse.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+
+                raycaster.setFromCamera(mouse, camera);
+                
+                const objectsToIntersect = interactables.flatMap(g => g.children);
+                const intersects = raycaster.intersectObjects(objectsToIntersect, false);
+
+                if (intersects.length > 0) {
+                    orbitControls.enabled = false;
+                    isDragging = true;
+                    
+                    const hitGroup = intersects[0].object.parent;
+                    selectObject(hitGroup);
+
+                    raycaster.ray.intersectPlane(dragPlane, intersectPoint);
+                    dragOffset.copy(intersectPoint).sub(hitGroup.position);
+                    container.style.cursor = 'grabbing';
+                } else {
+                    selectObject(null);
+                }
+            });
+
+            renderer.domElement.addEventListener('pointermove', (e) => {
+                if (!isDragging || !selectedObject) return;
+
+                const rect = renderer.domElement.getBoundingClientRect();
+                mouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+                mouse.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+
+                raycaster.setFromCamera(mouse, camera);
+                if (raycaster.ray.intersectPlane(dragPlane, intersectPoint)) {
+                    const newPos = intersectPoint.sub(dragOffset);
+                    
+                    newPos.x = Math.max(-14, Math.min(14, newPos.x));
+                    newPos.z = Math.max(-10, Math.min(14, newPos.z));
+                    newPos.y = 0; 
+                    
+                    selectedObject.position.copy(newPos);
+                    if(selectionBox) selectionBox.setFromObject(selectedObject);
+                }
+            });
+
+            renderer.domElement.addEventListener('pointerup', () => {
+                isDragging = false;
+                orbitControls.enabled = true;
+                container.style.cursor = 'grab';
+            });
+
+            loadRoom('cozinha');
+
+            function render() {
+                requestAnimationFrame(render);
+                orbitControls.update();
+                
+                if (selectionBox && selectedObject) {
+                    selectionBox.update();
+                }
+
+                renderer.render(scene, camera);
+            }
+            render();
+
+            const resizeObserver = new ResizeObserver(() => {
+                const w = container.clientWidth;
+                const h = container.clientHeight;
+                if(w > 0 && h > 0) {
+                    camera.aspect = w / h;
+                    camera.updateProjectionMatrix();
+                    renderer.setSize(w, h);
+                }
+            });
+            resizeObserver.observe(container);
+
+        });
+    </script>
+</body>
+</html>
