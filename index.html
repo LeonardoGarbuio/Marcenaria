@@ -36,12 +36,20 @@
            ========================================= */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
+        html, body {
+            overflow-x: hidden !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            position: relative;
+            margin: 0;
+            padding: 0;
+        }
+        
         body {
             background-color: var(--bg-light);
             color: var(--text-dark);
             font-family: var(--font-sans);
             line-height: 1.6;
-            overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
         }
 
@@ -56,7 +64,7 @@
            HEADER
            ========================================= */
         header {
-            position: fixed; top: 0; width: 100%; z-index: 100;
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
             padding: 1.5rem 5%; display: flex; justify-content: space-between; align-items: center;
             transition: 0.4s ease; border-bottom: 1px solid transparent;
         }
@@ -291,10 +299,49 @@
         
         footer { background: var(--bg-dark); border-top: 1px solid rgba(255,255,255,0.05); padding: 2rem 5%; display: flex; justify-content: space-between; color: #666; font-size: 0.8rem; }
 
+        /* =========================================
+           MEDIA QUERIES RESPONSIVE
+           ========================================= */
+        .header-actions { display: flex; align-items: center; gap: 1.5rem; }
+        .mobile-toggle { display: none; background: none; border: none; color: var(--text-dark); cursor: pointer; }
+
         @media (max-width: 992px) {
-            .hero-title { font-size: 3rem; }
+            .mobile-toggle { display: block; }
+            .header-actions .btn-primary { display: none; }
+            .nav-links {
+                position: fixed; top: 0; right: 0; width: 280px; height: 100vh;
+                background: var(--bg-light); flex-direction: column; padding: 6rem 2rem 2rem;
+                transition: transform 0.4s ease; box-shadow: -5px 0 20px rgba(0,0,0,0.1);
+                z-index: 90; transform: translateX(100%);
+            }
+            .nav-links.active { transform: translateX(0); }
+            .hero-title { font-size: clamp(2rem, 8vw, 3rem); }
+            .hero-content { padding: 0 1.5rem; width: 100%; box-sizing: border-box; }
+            .hero-actions { display: flex !important; flex-direction: column !important; width: 100% !important; gap: 1rem !important; align-items: center !important; }
+            .hero-actions .btn-primary, .hero-actions .btn-secondary { width: 100% !important; max-width: 300px; justify-content: center !important; display: flex !important; }
+            footer .container { flex-direction: column; gap: 1rem; text-align: center; justify-content: center !important; }
             .int-container { grid-template-columns: 1fr; height: auto; }
-            .int-nav { border-left: none; padding-left: 0; flex-direction: row; flex-wrap: wrap; justify-content: center; }
+            .int-nav { border-left: none; padding-left: 0; flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 1rem; }
+            .int-btn { font-size: 1.5rem; }
+            .int-btn.active { font-size: 1.8rem; }
+
+            /* CRITICAL FIX: process-track com width:max-content causa overflow */
+            .process-section { overflow: hidden; }
+            .process-wrapper { overflow: hidden !important; width: 100% !important; }
+            .process-track { 
+                display: flex !important;
+                flex-direction: column !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                padding: 2rem 0 !important;
+                gap: 3rem !important;
+            }
+            .process-card { 
+                width: 100% !important;
+                max-width: 100% !important;
+                box-sizing: border-box !important;
+            }
+
             .int-btn.active::before { display: none; }
             .int-display { height: 400px; }
             .materials-grid { grid-template-columns: 1fr; }
@@ -311,13 +358,18 @@
     <!-- HEADER -->
     <header id="header">
         <a href="#" class="logo">Madeira Nobre</a>
-        <nav class="nav-links">
+        <nav class="nav-links" id="nav-links">
             <a href="#ambientes">Ambientes</a>
             <a href="#processo">Processo</a>
             <a href="#materiais">Acabamentos</a>
             <a href="#projetos">Portfólio</a>
         </nav>
-        <a href="https://wa.me/SEUNUMERO" target="_blank" class="btn-primary">WhatsApp</a>
+        <div class="header-actions">
+            <a href="https://wa.me/SEUNUMERO" target="_blank" class="btn-primary">WhatsApp</a>
+            <button class="mobile-toggle" id="mobile-toggle">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
     </header>
 
     <!-- 1. HERO: A TRANSFORMAÇÃO -->
@@ -605,6 +657,21 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             gsap.registerPlugin(ScrollTrigger);
+
+            // Menu Mobile Toggle
+            const mobileToggle = document.getElementById('mobile-toggle');
+            const navLinks = document.getElementById('nav-links');
+            if (mobileToggle) {
+                mobileToggle.addEventListener('click', () => {
+                    navLinks.classList.toggle('active');
+                });
+            }
+
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                });
+            });
 
             // HEADER SCROLL
             const header = document.getElementById('header');
